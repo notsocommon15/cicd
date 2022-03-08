@@ -20,17 +20,12 @@ pipeline {
 	}
 	  
     stage('build') {
-	  agent { docker { image 'python:3.8.5-slim-buster' } }
+	  agent { docker { image 'python:3.8.5-alpine3.12' } }
       steps {
         sh 'pip install -r requirements.txt && python ${WORKSPACE}/src/test.py'
       }
     }
 
-        stage('Test') {
-            steps {
-                sh 'python --version'
-            }
-        }
     
     //stage('test') {
 	//agent { docker { image 'python:3.8.5-alpine3.12' } }
