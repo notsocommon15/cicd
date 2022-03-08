@@ -20,7 +20,7 @@ pipeline {
 	}
 	  
     stage('build') {
-	  agent { docker { image 'python:3.10.1-alpine2.32.0' } }
+	  agent { docker { image 'python:3.10.1-alpine' } }
       steps {
         sh 'pip install -r requirements.txt && python ${WORKSPACE}/src/test.py'
       }
