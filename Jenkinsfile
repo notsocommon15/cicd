@@ -16,7 +16,7 @@ pipeline {
 	}
 	  
     stage('build') {
-	      agent { dockerfile true }
+	      agent any
       steps {
         sh 'pip install -r requirements.txt && python ${WORKSPACE}/src/test.py'
       }
