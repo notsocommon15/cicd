@@ -38,7 +38,7 @@ pipeline {
 		
     stage('Run Image / Container Creation') {
         steps{
-		sh 'docker run -p 5000:5000 -d --name myfirstcontainer personal-python-test'
+		sh 'docker run -p 5000:5000 -d --name myfirstcontainer-${VERSION} personal-python-test'
 		}
     }
   }
