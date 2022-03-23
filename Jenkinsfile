@@ -32,13 +32,13 @@ pipeline {
 	
     stage('Docker Image') {
       steps{
-	      sh 'docker build -t personal-python-test:${BUILD_NUMBER} .'
+	      sh 'docker build -t personal-python-test .'
 		  }
         }
 		
     stage('Run Image / Container Creation') {
         steps{
-		sh 'docker run -p 5000:5000 -d --name myfirstcontainer personal-python-test:${BUILD_NUMBER}'
+		sh 'docker run -p 5000:5000 -d --name myfirstcontainer personal-python-test'
 		}
     }
   }
