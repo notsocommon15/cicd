@@ -4,6 +4,10 @@ pipeline {
  
  agent any
  
+ environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred-raja')
+	}
+
  stages {
  
 	stage('Initialize'){
@@ -32,13 +36,19 @@ pipeline {
 	
     stage('Docker Image') {
       steps{
-	      sh 'docker build -t personal-python-test .'
+	      sh 'docker build -t personal-python-test:latest .'
 		  }
         }
-		
+		stage('Push') {
+
+			steps {
+				sh 'docker push personal-python-test:latest'
+			}
+		}
+
     stage('Run Image / Container Creation') {
         steps{
-		sh 'docker run -p 5000:5000 -d --name myfirstcontainer personal-python-test'
+		sh 'docker run -p 5000:5000 -d --name myfirstcontainer:$BUILD_NUMBER personal-python-test:latest'
 		}
     }
   }
