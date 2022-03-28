@@ -40,18 +40,18 @@ pipeline {
 		  }
         }
 
-    stage('Login') {
+   // stage('Login') {
 
-			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p --password-stdin'
-			}
-		}
-		stage('Push') {
+		//	steps {
+		//		sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p --password-stdin'
+		//	}
+	//	}
+	//	stage('Push') {
 
-			steps {
-				sh 'docker push kediasubham/personal-python-test:latest'
-			}
-		}
+		//	steps {
+			//	sh 'docker push kediasubham/personal-python-test:latest'
+		//	}
+	//	}
 
 
 
