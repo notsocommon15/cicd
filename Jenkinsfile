@@ -39,12 +39,21 @@ pipeline {
 	      sh 'docker build -t personal-python-test:latest .'
 		  }
         }
+
+    stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
 		stage('Push') {
 
 			steps {
-				sh 'docker push personal-python-test:latest'
+				sh 'docker push kediasubham/personal-python-test:latest'
 			}
 		}
+
+
 
     stage('Run Image / Container Creation') {
         steps{
